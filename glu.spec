@@ -8,13 +8,11 @@ Release:	3
 Summary:	Mesa libGLU library
 Group:		System/Libraries
 License:	MIT
-URL:		http://mesa3d.org/
+Url:		http://mesa3d.org/
 # snapshot only at this point
 Source0:	ftp://ftp.freedesktop.org/pub/mesa/glu/%{name}-%{version}.tar.bz2
 Source2:	make-git-snapshot.sh
 
-BuildRequires:	autoconf
-BuildRequires:	automake
 BuildRequires:	libtool
 BuildRequires:	pkgconfig(gl)
 
@@ -37,8 +35,7 @@ OpenGL.
 Summary:	Development files for GLU libs
 Group:		Development/C
 Requires:	%{libname} = %{version}-%{release}
-Provides:	libmesaglu-devel = %{version}-%{release}
-Provides:	mesaglu-devel = %{version}-%{release}
+Provides:	%{name}-devel = %{version}-%{release}
 Obsoletes:	%{_lib}mesaglu1-devel < 9.0
 
 %description -n	%{devname}
@@ -63,3 +60,4 @@ rm -rf %{buildroot}%{_datadir}/man/man3/gl[A-Z]*
 %{_includedir}/GL/glu_mangle.h
 %{_libdir}/libGLU.so
 %{_libdir}/pkgconfig/glu.pc
+
