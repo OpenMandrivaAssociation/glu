@@ -4,7 +4,7 @@
 
 Name:		glu
 Version:	9.0.0
-Release:	10
+Release:	11
 Summary:	Mesa libGLU library
 Group:		System/Libraries
 License:	MIT
