@@ -42,14 +42,14 @@ Obsoletes:	%{_lib}mesaglu1-devel < 9.0
 This package contains the headers needed to compile programs with GLU.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%configure2_5x --disable-static
-%make
+%configure --disable-static
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 rm -rf %{buildroot}%{_datadir}/man/man3/gl[A-Z]*
 
 %files -n %{libname}
