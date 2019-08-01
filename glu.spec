@@ -4,7 +4,7 @@
 
 Name:		glu
 Version:	9.0.0
-Release:	20
+Release:	21
 Summary:	Mesa libGLU library
 Group:		System/Libraries
 License:	MIT
@@ -23,6 +23,9 @@ Mesa implementation of the standard GLU OpenGL utility API.
 Summary:	Files for Mesa (GLU libs)
 Group:		System/Libraries
 Provides:	libmesaglu = %{version}-%{release}
+# Fix installing apps like Google Earth buy providing mesa-libGLU (angry)
+Provides:	mesa-libGLU = %{version}-%{release}
+Provides:	mesa-libglu = %{version}-%{release}
 Obsoletes:	%{_lib}mesaglu1 < 9.0
 
 %description -n	%{libname}
