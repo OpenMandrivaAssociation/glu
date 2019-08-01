@@ -3,14 +3,14 @@
 %define devname %mklibname %{name} -d
 
 Name:		glu
-Version:	9.0.0
-Release:	21
+Version:	9.0.1
+Release:	1
 Summary:	Mesa libGLU library
 Group:		System/Libraries
 License:	MIT
 Url:		http://mesa3d.org/
 # snapshot only at this point
-Source0:	ftp://ftp.freedesktop.org/pub/mesa/glu/%{name}-%{version}.tar.bz2
+Source0:	ftp://ftp.freedesktop.org/pub/mesa/glu/%{name}-%{version}.tar.xz
 Source2:	make-git-snapshot.sh
 
 BuildRequires:	libtool
