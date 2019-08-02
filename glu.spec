@@ -1,10 +1,11 @@
 %define major 1
 %define libname %mklibname %{name} %{major}
 %define devname %mklibname %{name} -d
+%global optflags %{optflags} -O3
 
 Name:		glu
 Version:	9.0.1
-Release:	1
+Release:	2
 Summary:	Mesa libGLU library
 Group:		System/Libraries
 License:	MIT
