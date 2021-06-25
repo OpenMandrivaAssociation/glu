@@ -13,8 +13,8 @@
 %define dev32name lib%{name}-devel
 
 Name:		glu
-Version:	9.0.1
-Release:	3
+Version:	9.0.2
+Release:	1
 Summary:	Mesa libGLU library
 Group:		System/Libraries
 License:	MIT
