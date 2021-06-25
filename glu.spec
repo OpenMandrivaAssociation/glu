@@ -107,8 +107,7 @@ rm -rf %{buildroot}%{_datadir}/man/man3/gl[A-Z]*
 %{_libdir}/libGLU.so.%{major}*
 
 %files -n %{devname}
-%{_includedir}/GL/glu.h
-%{_includedir}/GL/glu_mangle.h
+%{_includedir}/GL/*.h
 %{_libdir}/libGLU.so
 %{_libdir}/pkgconfig/glu.pc
 
