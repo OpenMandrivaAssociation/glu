@@ -14,24 +14,25 @@
 
 Name:		glu
 Version:	9.0.2
-Release:	2
+Release:	3
 Summary:	Mesa libGLU library
 Group:		System/Libraries
 License:	MIT
 Url:		http://mesa3d.org/
 Source0:	https://mesa.freedesktop.org/archive/glu/%{name}-%{version}.tar.xz
 Source2:	make-git-snapshot.sh
-
+Patch0:		https://gitlab.freedesktop.org/mesa/glu/-/merge_requests/10.patch
 BuildRequires:	libtool
 BuildRequires:	pkgconfig(gl)
 %if %{with compat32}
+BuildRequires:	libc6
 BuildRequires:	devel(libGL)
 %endif
 
 %description
 Mesa implementation of the standard GLU OpenGL utility API.
 
-%package -n	%{libname}
+%package -n %{libname}
 Summary:	Files for Mesa (GLU libs)
 Group:		System/Libraries
 Provides:	libmesaglu = %{version}-%{release}
@@ -40,40 +41,40 @@ Provides:	mesa-libGLU = %{version}-%{release}
 Provides:	mesa-libglu = %{version}-%{release}
 Obsoletes:	%{_lib}mesaglu1 < 9.0
 
-%description -n	%{libname}
+%description -n %{libname}
 GLU is the OpenGL Utility Library.
 It provides a number of functions upon the base OpenGL library to provide
 higher-level drawing routines from the more primitive routines provided by
 OpenGL.
 
-%package -n	%{devname}
+%package -n %{devname}
 Summary:	Development files for GLU libs
 Group:		Development/C
 Requires:	%{libname} = %{version}-%{release}
 Provides:	%{name}-devel = %{version}-%{release}
 Obsoletes:	%{_lib}mesaglu1-devel < 9.0
 
-%description -n	%{devname}
+%description -n %{devname}
 This package contains the headers needed to compile programs with GLU.
 
 %if %{with compat32}
-%package -n	%{lib32name}
+%package -n %{lib32name}
 Summary:	Files for Mesa (GLU libs) (32-bit)
 Group:		System/Libraries
 
-%description -n	%{lib32name}
+%description -n %{lib32name}
 GLU is the OpenGL Utility Library.
 It provides a number of functions upon the base OpenGL library to provide
 higher-level drawing routines from the more primitive routines provided by
 OpenGL.
 
-%package -n	%{dev32name}
+%package -n %{dev32name}
 Summary:	Development files for GLU libs (32-bit)
 Group:		Development/C
 Requires:	%{devname} = %{version}-%{release}
 Requires:	%{lib32name} = %{version}-%{release}
 
-%description -n	%{dev32name}
+%description -n %{dev32name}
 This package contains the headers needed to compile programs with GLU.
 %endif
 
