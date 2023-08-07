@@ -13,16 +13,15 @@
 %define dev32name lib%{name}-devel
 
 Name:		glu
-Version:	9.0.2
-Release:	3
+Version:	9.0.3
+Release:	1
 Summary:	Mesa libGLU library
 Group:		System/Libraries
 License:	MIT
 Url:		http://mesa3d.org/
 Source0:	https://mesa.freedesktop.org/archive/glu/%{name}-%{version}.tar.xz
 Source2:	make-git-snapshot.sh
-Patch0:		https://gitlab.freedesktop.org/mesa/glu/-/merge_requests/10.patch
-BuildRequires:	libtool
+BuildRequires:	meson
 BuildRequires:	pkgconfig(gl)
 %if %{with compat32}
 BuildRequires:	libc6
@@ -80,28 +79,22 @@ This package contains the headers needed to compile programs with GLU.
 
 %prep
 %autosetup -p1
-export CONFIGURE_TOP="$(pwd)"
-%if %{with compat32}
-mkdir build32
-cd build32
-%configure32
-cd ..
-%endif
-mkdir build
-cd build
-%configure
 
 %build
 %if %{with compat32}
-%make_build -C build32
+%meson32
+%ninja_build -C build32
 %endif
-%make_build -C build
+
+%meson
+%meson_build
 
 %install
 %if %{with compat32}
-%make_install -C build32
+%ninja_install -C build32
 %endif
-%make_install -C build
+%meson_install
+
 rm -rf %{buildroot}%{_datadir}/man/man3/gl[A-Z]*
 
 %files -n %{libname}
@@ -109,6 +102,7 @@ rm -rf %{buildroot}%{_datadir}/man/man3/gl[A-Z]*
 
 %files -n %{devname}
 %{_includedir}/GL/*.h
+%{_libdir}/*.a
 %{_libdir}/libGLU.so
 %{_libdir}/pkgconfig/glu.pc
 
@@ -117,6 +111,7 @@ rm -rf %{buildroot}%{_datadir}/man/man3/gl[A-Z]*
 %{_prefix}/lib/libGLU.so.%{major}*
 
 %files -n %{dev32name}
+%{_prefix}/lib/*.a
 %{_prefix}/lib/libGLU.so
 %{_prefix}/lib/pkgconfig/glu.pc
 %endif
