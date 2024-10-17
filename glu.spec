@@ -18,7 +18,7 @@ Release:	1
 Summary:	Mesa libGLU library
 Group:		System/Libraries
 License:	MIT
-Url:		http://mesa3d.org/
+Url:		https://mesa3d.org/
 Source0:	https://mesa.freedesktop.org/archive/glu/%{name}-%{version}.tar.xz
 Source2:	make-git-snapshot.sh
 BuildRequires:	meson
